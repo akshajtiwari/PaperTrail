@@ -42,7 +42,7 @@ async def application(details:application_detail):
         created_at=created_at,
         update_at=updated_at
     )
-    applications_list.append(response) #add the response to a list of all the applications 
+    applications_list.append(response) #add the response to a list of all the applications , use database later 
     return response
 
 @app.get("/applications")
@@ -53,7 +53,7 @@ async def get_applications(
     search:str=None,
     sort:str="date_applied_desc"
 ):
-    sorted_applications=sort(
+    sorted_applications=sorted(
         applications_list, #using sort(list) creates a new list instead of sorting the original list
         key=lambda application:application.date_applied,
         reverse=True #last applied is first 
