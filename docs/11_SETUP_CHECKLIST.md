@@ -12,15 +12,15 @@
 ## Backend
 
 - [x] Check Python version
-- [ ] Create virtual environment
-- [ ] Activate environment
-- [ ] Install FastAPI
-- [ ] Install ASGI server
-- [ ] Install Pydantic-compatible dependencies as needed
-- [ ] Create `backend/`
-- [ ] Create `backend/app/`
-- [ ] Add `main.py`
-- [ ] Create `/health`
+- [x] Create virtual environment
+- [x] Activate environment
+- [x] Install FastAPI
+- [x] Install ASGI server
+- [x] Install Pydantic-compatible dependencies as needed
+- [x] Create `backend/`
+- [x] Create `backend/app/`
+- [x] Add `main.py`
+- [x] Create `/health`
 
 ## Frontend
 

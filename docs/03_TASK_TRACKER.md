@@ -38,7 +38,7 @@ Only keep **one main task** in `DOING` at a time during the learning phases. Thi
 
 | ID | Task | Status | Dependency | Notes |
 |---|---|---|---|---|
-| P2-01 | Define Application input schema | TODO | P1 complete | |
+| P2-01 | Define Application input schema | Done | P1 complete | |
 | P2-02 | Define Application response schema | TODO | P2-01 | |
 | P2-03 | Implement create endpoint | TODO | P2-02 | |
 | P2-04 | Implement list endpoint | TODO | P2-03 | |

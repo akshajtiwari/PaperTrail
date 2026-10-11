@@ -1,6 +1,6 @@
-# ApplyTrack Project Docs
+# PaperTrail Project Docs
 
-This folder contains the planning and execution documents for the ApplyTrack full-stack learning project.
+This folder contains the planning and execution documents for the PaperTrail full-stack learning project.
 
 ## Files
 

@@ -41,21 +41,7 @@ Example request:
 
 Expected response: created resource with generated `id` and timestamps.
 
-### GET `/applications`
 
-Initial behavior:
-
-- return all applications
-- newest first once date sorting is implemented
-
-Later query parameters:
-
-```text
-?page=1&page_size=20
-?status=Interview
-?search=google
-?sort=date_applied_desc
-```
 
 ### GET `/applications/{id}`
 
