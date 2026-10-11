@@ -30,6 +30,7 @@ async def healthcheck():
         content={"Status":"healthy"},
         status_code=200
     )
+applications_list=[]
 
 @app.post("/applications/")
 async def application(details:application_detail):
@@ -41,7 +42,21 @@ async def application(details:application_detail):
         created_at=created_at,
         update_at=updated_at
     )
+    applications_list.append(response) #add the response to a list of all the applications 
     return response
 
-
+@app.get("/applications")
+async def get_applications(
+    page: int=1,
+    page_size:int=20,
+    status:str=None,
+    search:str=None,
+    sort:str="date_applied_desc"
+):
+    sorted_applications=sort(
+        applications_list, #using sort(list) creates a new list instead of sorting the original list
+        key=lambda application:application.date_applied,
+        reverse=True #last applied is first 
+    )
+    return sorted_applications
 
