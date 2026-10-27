@@ -32,7 +32,7 @@ async def healthcheck():
     )
 applications_list=[]
 
-@app.post("/applications/")
+@app.post("/applications")
 async def application(details:application_detail):
     created_at,updated_at=generate_time()
     post_id=uuid4() #creates a random number id using the 128 bits 122 are completely random , version 4 
