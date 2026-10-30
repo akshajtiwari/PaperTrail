@@ -1,4 +1,4 @@
-from fastapi import  FastAPI
+from fastapi import  FastAPI,status,HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel,HttpUrl
 from datetime import date,datetime
@@ -12,15 +12,15 @@ class application_detail(BaseModel):
     status:str
     notes:str
 
-class application_response(application_detail): #inherits application detail schema fields and adds 3 of its own (if, creation and updation)
-    id:int
+class application_response(application_detail): #inherits application detail schema fields and adds 3 of its own (id, creation and updation)
+    id:str
     created_at: datetime
-    update_at: datetime
+    updated_at: datetime
 
 def generate_time():
     created_at=datetime.now()
-    update_at=created_at
-    return created_at,update_at
+    updated_at=created_at
+    return created_at,updated_at
 
 app=FastAPI()
 
@@ -32,15 +32,15 @@ async def healthcheck():
     )
 applications_list=[]
 
-@app.post("/applications")
+@app.post("/applications",status_code=status.HTTP_201_CREATED)
 async def application(details:application_detail):
     created_at,updated_at=generate_time()
-    post_id=uuid4() #creates a random number id using the 128 bits 122 are completely random , version 4 
+    post_id=str(uuid4()) #random version 4 UUID as a string, e.g. "6770d16c-4394-..." (a string so JavaScript can't round it like a big int)
     response=application_response(
         **details.model_dump(), #creates a dictionary of the details
-        id=post_id.int,
+        id=post_id,
         created_at=created_at,
-        update_at=updated_at
+        updated_at=updated_at
     )
     applications_list.append(response) #add the response to a list of all the applications , use database later 
     return response
@@ -49,8 +49,8 @@ async def application(details:application_detail):
 async def get_applications(
     page: int=1,
     page_size:int=20,
-    status:str=None,
-    search:str=None,
+    status:str|None=None, #the variable can contain either a string or None if nothing then None
+    search:str|None=None, #search is defined as a Function Parameter with default value (None) but not used so fastapi will use it as a query parameter
     sort:str="date_applied_desc"
 ):
     sorted_applications=sorted(
@@ -60,3 +60,13 @@ async def get_applications(
     )
     return sorted_applications
 
+@app.get("/applications/{application_id}",status_code=status.HTTP_200_OK)
+async def applications_byid(application_id:str):
+    for application in applications_list:
+        if application.id==application_id:
+            return application
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="Application not found"
+    )
+    
