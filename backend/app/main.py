@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel,HttpUrl
 from datetime import date,datetime
 from uuid import uuid4
+from typing import Optional #Used to mark the fields in the PATCH schema as optional
 
 class application_detail(BaseModel):
     company_name: str
@@ -16,6 +17,14 @@ class application_response(application_detail): #inherits application detail sch
     id:str
     created_at: datetime
     updated_at: datetime
+
+class application_update(BaseModel): #Optional Schema for the Patch endpoint  
+    company_name: Optional[str]=None
+    role_title:Optional[str]=None
+    application_url:Optional[HttpUrl]=None #Validates url
+    date_applied: Optional[date]=None
+    status:Optional[str]=None
+    notes:Optional[str]=None
 
 def generate_time():
     created_at=datetime.now()
@@ -70,3 +79,23 @@ async def applications_byid(application_id:str):
         detail="Application not found"
     )
     
+@app.patch("/applications/{application_id}",status_code=status.HTTP_200_OK)
+async def application_update_status(application_id:str,             update_data:application_update): #update_data: application_update is a type annotation that tells to expect a request body matching the application_update schema.
+    for application in applications_list:
+        if application.id ==application_id:
+
+            changes=update_data.model_dump(exclude_unset=True) # creates a dictionary with only the fields that were sent , and not the entire schema
+            if any(value is None for value in changes.values()):
+                raise HTTPException(
+                    status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+                    detail="Updated fields cannot be Null"
+                )
+            for field,value in changes.items():
+                setattr(application,field,value)
+            if changes:
+                application.updated_at=datetime.now() #if there is a field in changes then it was updated so put its time again 
+            return application
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="Application not Found"
+    )
