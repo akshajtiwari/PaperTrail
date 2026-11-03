@@ -4,7 +4,6 @@ from pydantic import BaseModel,HttpUrl
 from datetime import date,datetime
 from uuid import uuid4
 from typing import Optional #Used to mark the fields in the PATCH schema as optional
-
 class application_detail(BaseModel):
     company_name: str
     role_title:str
@@ -80,7 +79,7 @@ async def applications_byid(application_id:str):
     )
     
 @app.patch("/applications/{application_id}",status_code=status.HTTP_200_OK)
-async def application_update_status(application_id:str,             update_data:application_update): #update_data: application_update is a type annotation that tells to expect a request body matching the application_update schema.
+async def application_update_status(application_id:str,update_data:application_update): #update_data: application_update is a type annotation that tells to expect a request body matching the application_update schema.
     for application in applications_list:
         if application.id ==application_id:
 
@@ -99,3 +98,5 @@ async def application_update_status(application_id:str,             update_data:
         status_code=status.HTTP_404_NOT_FOUND,
         detail="Application not Found"
     )
+@app.delete("/applications/{application_id}",status_code=status.HTTP_200_OK)
+async def 
