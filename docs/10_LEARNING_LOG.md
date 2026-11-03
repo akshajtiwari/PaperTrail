@@ -1,4 +1,4 @@
-# ApplyTrack — Learning Log
+# PaperTrail — Learning Log
 
 The purpose of this project is not only to produce an application. It is to build independent engineering ability.
 

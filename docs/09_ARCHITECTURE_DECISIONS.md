@@ -1,4 +1,4 @@
-# ApplyTrack — Architecture Decision Record
+# PaperTrail — Architecture Decision Record
 
 Keep this file updated whenever an important technical choice is made.
 

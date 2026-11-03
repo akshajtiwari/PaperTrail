@@ -1,4 +1,4 @@
-# ApplyTrack — API Contract
+# PaperTrail — API Contract
 
 This contract is intentionally small for the first implementation. Expand it only when a phase requires it.
 

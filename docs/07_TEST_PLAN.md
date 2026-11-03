@@ -1,4 +1,4 @@
-# ApplyTrack — Test Plan
+# PaperTrail — Test Plan
 
 Testing is introduced gradually rather than all at once.
 

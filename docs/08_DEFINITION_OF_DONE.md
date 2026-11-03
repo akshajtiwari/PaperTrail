@@ -1,4 +1,4 @@
-# ApplyTrack — Definition of Done
+# PaperTrail — Definition of Done
 
 A task can be marked `DONE` only when the applicable criteria are satisfied.
 

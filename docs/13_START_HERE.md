@@ -1,4 +1,4 @@
-# ApplyTrack — Start Here
+# PaperTrail — Start Here
 
 This is the execution guide for the first few sessions.
 

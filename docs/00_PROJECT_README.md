@@ -1,12 +1,11 @@
-# ApplyTrack — Project Documentation
+# PaperTrail — Project Documentation
 
-ApplyTrack is a personal application-management system for tracking internships, jobs, scholarships, hackathons, programs, and other applications.
+PaperTrail is a personal application-management system for tracking internships, jobs, scholarships, hackathons, programs, and other applications.
 
 The core problem it solves is simple:
 
 > After applying, you should still know what you applied for, when you applied, which resume/CV you used, what the original job description said, what happened afterward, and what you need to do next.
 
-This project is intentionally designed as a learning project. The product should become useful while forcing the developer to learn full-stack fundamentals from first principles.
 
 ## Primary learning objective
 

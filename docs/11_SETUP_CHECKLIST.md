@@ -1,4 +1,4 @@
-# ApplyTrack — Pre-Implementation Setup Checklist
+# PaperTrail — Pre-Implementation Setup Checklist
 
 ## Repository
 

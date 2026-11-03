@@ -42,7 +42,7 @@ Only keep **one main task** in `DOING` at a time during the learning phases. Thi
 | P2-02 | Define Application response schema | Done | P2-01 | |
 | P2-03 | Implement create endpoint | Done | P2-02 | |
 | P2-04 | Implement list endpoint | Done | P2-03 | |
-| P2-05 | Implement get endpoint | TODO | P2-04 | |
+| P2-05 | Implement get endpoint | Done | P2-04 | |
 | P2-06 | Implement update endpoint | TODO | P2-05 | |
 | P2-07 | Implement delete endpoint | TODO | P2-06 | |
 | P2-08 | Add validation errors | TODO | P2-07 | |
@@ -178,19 +178,3 @@ Only keep **one main task** in `DOING` at a time during the learning phases. Thi
 | P13-08 | Add structured logging | TODO | P13-07 | |
 | P13-09 | Deploy | TODO | P13-08 | |
 
-## Weekly review template
-
-At the end of each work session/week, record:
-
-```text
-Week/date:
-Current phase:
-Tasks completed:
-What I learned:
-What confused me:
-Biggest bug:
-Why the bug happened:
-How I fixed it:
-What I can now explain without help:
-Next single task:
-```

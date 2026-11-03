@@ -1,8 +1,8 @@
-# ApplyTrack — Detailed Project Requirements Document
+# PaperTrail — Detailed Project Requirements Document
 
 ## 1. Project identity
 
-**Project name:** ApplyTrack
+**Project name:** PaperTrail
 
 **Project type:** Personal full-stack web application
 
@@ -25,7 +25,7 @@ Typical problems:
 - Not knowing the current status of an application
 - Having no useful history of previous applications
 
-ApplyTrack centralizes this information into one application record and a timeline of events.
+PaperTrail centralizes this information into one application record and a timeline of events.
 
 ## 3. Product vision
 

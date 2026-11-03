@@ -1,4 +1,4 @@
-# ApplyTrack — UI Requirements
+# PaperTrail — UI Requirements
 
 The interface should be simple, functional, and information-dense without looking like a generic AI-generated SaaS dashboard.
 

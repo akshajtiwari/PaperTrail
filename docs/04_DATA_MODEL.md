@@ -1,4 +1,4 @@
-# ApplyTrack — Data Model
+# PaperTrail — Data Model
 
 This document describes the intended data model, but implementation must be introduced phase by phase.
 

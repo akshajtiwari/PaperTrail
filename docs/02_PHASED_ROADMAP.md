@@ -1,4 +1,4 @@
-# ApplyTrack — Gradual Phase Roadmap
+# PaperTrail — Gradual Phase Roadmap
 
 The project should be built in very small increments. Do not skip ahead because a later feature looks exciting.
 
