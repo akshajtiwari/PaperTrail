@@ -98,5 +98,13 @@ async def application_update_status(application_id:str,update_data:application_u
         status_code=status.HTTP_404_NOT_FOUND,
         detail="Application not Found"
     )
-@app.delete("/applications/{application_id}",status_code=status.HTTP_200_OK)
-async def 
+@app.delete("/applications/{application_id}",status_code=status.HTTP_204_NO_CONTENT)
+async def application_delete(application_id:str):
+        for application in applications_list:
+            if application.id==application_id:
+                applications_list.remove(application)
+                return
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Application not found"
+            )
