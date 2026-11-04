@@ -43,8 +43,8 @@ Only keep **one main task** in `DOING` at a time during the learning phases. Thi
 | P2-03 | Implement create endpoint | Done | P2-02 | |
 | P2-04 | Implement list endpoint | Done | P2-03 | |
 | P2-05 | Implement get endpoint | Done | P2-04 | |
-| P2-06 | Implement update endpoint | TODO | P2-05 | |
-| P2-07 | Implement delete endpoint | TODO | P2-06 | |
+| P2-06 | Implement update endpoint | Done | P2-05 | |
+| P2-07 | Implement delete endpoint | Done | P2-06 | |
 | P2-08 | Add validation errors | TODO | P2-07 | |
 | P2-09 | Manually test every endpoint | TODO | P2-08 | |
 
@@ -52,9 +52,9 @@ Only keep **one main task** in `DOING` at a time during the learning phases. Thi
 
 | ID | Task | Status | Dependency | Notes |
 |---|---|---|---|---|
-| P3-01 | Configure SQLite | TODO | Phase 2 | |
-| P3-02 | Create SQLAlchemy engine/session | TODO | P3-01 | |
-| P3-03 | Create Application model | TODO | P3-02 | |
+| P3-01 | Configure SQLite | Done | Phase 2 | |
+| P3-02 | Create SQLAlchemy engine/session | Done | P3-01 | | #switched to simple sql queries 
+| P3-03 | Create Application model | Done | P3-02 | |
 | P3-04 | Create database table | TODO | P3-03 | |
 | P3-05 | Replace in-memory create | TODO | P3-04 | |
 | P3-06 | Replace list/get | TODO | P3-05 | |
