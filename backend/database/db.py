@@ -17,9 +17,9 @@ try:
 
 except Exception as e:
     logger.error(f"Failed to create database: {e}")
-    
+
 #create the applications table
-create_applications_table_query="""
+create_applications_table="""
  CREATE TABLE IF NOT EXISTS applications (
   id TEXT PRIMARY KEY AUTOINCREMENT, #type TEXT so that uuid  are valid from the backend api 
   company_name varchar(255) NOT NULL,
@@ -33,8 +33,27 @@ create_applications_table_query="""
 ) """  #for the number 255/10 sqllite ignores it and it becomes infinite length column
 
 try:
-    cursor.execute(create_applications_table_query)
+    cursor.execute(create_applications_table)
     logger.info("Applications Table was created successfully")
 
 except Exception as e:
     logger.error(f"Failed to create the table: {e}")
+#insert applications 
+insert_applications="""
+    INSERT into application(
+    id,
+    company_name,
+    role_title,
+    application_url,
+    date_applied,
+    status,
+    notes,
+    created_at,
+    updated_at
+    )"""
+
+try:
+    cursor.execute(insert_applications) 
+    logger.info("Data inserted in the applications table successfully")
+except Exception as e:
+    logger.error(f"Failed to insert data in the applications table: {e}")
