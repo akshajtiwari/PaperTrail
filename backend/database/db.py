@@ -4,7 +4,7 @@ import logging
 logging.basicConfig( #schema for  basic logging 
     level=logging.INFO,
     format="%(levelname)s: %(message)s"
-    logging.FileHandler("db.log", encoding="utf-8")
+    logging.FileHandler("applications_db.log", encoding="utf-8")
 )
 
 logger = logging.getLogger(__name__) #initialise the logger
@@ -17,3 +17,24 @@ try:
 
 except Exception as e:
     logger.error(f"Failed to create database: {e}")
+    
+#create the applications table
+create_applications_table_query="""
+ CREATE TABLE IF NOT EXISTS applications (
+  id TEXT PRIMARY KEY AUTOINCREMENT, #type TEXT so that uuid  are valid from the backend api 
+  company_name varchar(255) NOT NULL,
+  role_title varchar(255) NOT NULL,
+  application_url VARCHAR(255) NULL,
+  date_applied DATE NULL,
+  status VARCHAR(255) NOT NULL,
+  notes VARCHAR(255) NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL
+) """  #for the number 255/10 sqllite ignores it and it becomes infinite length column
+
+try:
+    cursor.execute(create_applications_table_query)
+    logger.info("Applications Table was created successfully")
+
+except Exception as e:
+    logger.error(f"Failed to create the table: {e}")
