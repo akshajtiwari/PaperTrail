@@ -1,13 +1,18 @@
 import sqlite3 as sql
 import logging
 
-logging.basicConfig( #schema for  basic logging 
+logging.basicConfig(
     level=logging.INFO,
-    format="%(levelname)s: %(message)s"
-    logging.FileHandler("applications_db.log", encoding="utf-8")
+    format="{asctime} [{levelname}] {name}: {message}",
+    style="{",
+    handlers=[
+        logging.FileHandler("applications_db.log", encoding="utf-8")
+    ]
 )
 
-logger = logging.getLogger(__name__) #initialise the logger
+
+logger = logging.getLogger(__name__) #initialise the 
+
 
 try:
     connection = sql.connect("applications.db")
@@ -19,9 +24,10 @@ except Exception as e:
     logger.error(f"Failed to create database: {e}")
 
 #create the applications table
-create_applications_table="""
+#type TEXT so that uuid  are valid from the backend api 
+create_applications_table=""" 
  CREATE TABLE IF NOT EXISTS applications (
-  id TEXT PRIMARY KEY AUTOINCREMENT, #type TEXT so that uuid  are valid from the backend api 
+  id TEXT PRIMARY KEY, 
   company_name varchar(255) NOT NULL,
   role_title varchar(255) NOT NULL,
   application_url VARCHAR(255) NULL,
