@@ -13,16 +13,8 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__) #initialise the logger 
 
-
-try:
-    connection = sql.connect("applications.db")
-
-    logger.info("Applications database created successfully")
-
-    cursor = connection.cursor()
-    #create the applications table
-    #type TEXT so that uuid  are valid from the backend api 
-    create_applications_table=""" 
+# QUERIES IN FORM OF VARIABLES
+create_applications_table=""" 
     CREATE TABLE IF NOT EXISTS applications (
       id TEXT PRIMARY KEY, 
       company_name varchar(255) NOT NULL,
@@ -35,11 +27,7 @@ try:
       updated_at DATETIME NOT NULL
     ) """  #for the number 255/10 sqllite ignores it and it becomes infinite length column
 
-
-    try:
-        cursor.execute(create_applications_table)
-        logger.info("Applications Table was created successfully")
-        insert_applications="""
+insert_applications="""
             INSERT into applications(
             id,
             company_name,
@@ -52,27 +40,31 @@ try:
             updated_at
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """
+def get_db_connection():
+    try:
+        connection=sql.connect("applications.db")
+        logger.info("Database Created Successfully")
+        cursor=connection.cursor()
+        return cursor ,connection
+    except sql.Error as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+    
+def initialise_database():
+    cursor, connection = get_db_connection()
+
+    try:
+        cursor.execute(create_applications_table)
+        connection.commit()
+        logger.info("Applications table created successfully")
 
     except sql.Error as e:
         logger.error(f"Failed to create the table: {e}")
-        
+        connection.rollback()
+        raise
 
-    try:
-        values = (
-            "some-uuid",
-            "Google",
-            "SDE Intern",
-            "https://careers.google.com",
-            "2026-11-06",
-            "Applied",
-            "Campus application",
-            "2026-11-06T19:00:00",
-            "2026-11-06T19:00:00"
-        )
-        cursor.execute(insert_applications,values) 
-        logger.info("Data inserted in the applications table successfully")
-        connection.commit()
-    except sql.Error as e:
-        logger.error(f"Failed to insert data in the applications table: {e}")
-except sql.Error as e:
-    logger.error(f"Database operations failed: {e}")
+    finally:
+        cursor.close()
+        connection.close()
+if __name__=="__main__":
+    initialise_database()
