@@ -1,3 +1,0 @@
-2026-11-04 14:32:07,216 [INFO] __main__: Applications database created successfully
-2026-11-04 14:32:07,232 [INFO] __main__: Applications Table was created successfully
-2026-11-04 14:32:07,232 [ERROR] __main__: Failed to insert data in the applications table: incomplete input
